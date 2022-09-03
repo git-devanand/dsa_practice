@@ -25,7 +25,18 @@ int getMin(int arr[], int n){
     return min;
 }
 
-int getMin(int arr[], int n){
+// method 2
+int get_min(int arr[], int n) {
+    int min = INT_MAX;
+    for (int i=0; i<n; i++) {
+        if (arr[i]<min){
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+int getMax(int arr[], int n){
     binarySort(arr, n, arr[0]);
     int max = arr[n/2];
     if (max == -1) return arr[n/2];
@@ -36,11 +47,25 @@ int getMin(int arr[], int n){
     return max;
 }
 
+// method 2 for finding max in O(n)
+int get_max(int arr[], int n) {
+    int max = INT_MIN;
+    for (int i=0; i<n; i++) {
+        if (arr[i]>max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
 int main()
 {
     int arr[] = {1,2,3,4,5};
     int n = sizeof(arr)/sizeof(arr[0]);
     cout << "Min: "<<getMin(arr, n)<<endl;
     cout << "Max: "<<getMax(arr, n)<<endl;
+    cout << "Min: "<<get_min(arr, n)<<endl;
+    cout << "Max: "<<get_max(arr, n)<<endl;
+    
     return 0;
 }
