@@ -13,7 +13,7 @@ class Solution {
         if(N<=0)
             return 0;
         if(N%2==1)
-            return 1+setBits(N/2);
+              return 1+setBits(N/2);
         return setBits(N/2);
     }
 };
