@@ -13,7 +13,7 @@ bool isPossibleSolution(vector<int> arr, int n, int m, int mid) {
             if (studentCount > m || arr[i] > mid) {
                 return false;
             }
-            pageSum = arr[i];
+        pageSum = arr[i];
         }
     }
     return true;
@@ -39,20 +39,19 @@ int allocateBooks(vector<int> arr, int n, int m) {
     return ans;
 }
 
-// int main() 
-// {
-//     int t;
-//     while(t--)
-//     {
-//         int n, m;
-//         cin >> n >> m;
-//         vector<int> arr;
-//         for (int i=0; i<n; i++) {
-//             cin >> arr[i];
-//         }
-//         int ans = allocateBooks(arr, n, m);
-//         cout << ans << endl;
-//     }
-//     return 0
+int main() 
+{
+    int t;
+    while(t--)
+    {
+        int n, m;
+        cin >> n >> m;
+        vector<int> arr;
+        for (int i=0; i<n; i++) {
+            cin >> arr[i];
+        }
+        int ans = allocateBooks(arr, n, m);
+        cout << ans << endl;
+    }
 
-// }
+}
