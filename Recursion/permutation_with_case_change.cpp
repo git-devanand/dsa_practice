@@ -14,6 +14,11 @@ void solve(string s,string ans){
     s.erase(s.begin()+0);
     solve(s, op1);
     solve(s, op2);
+
+    // ans.push_back(s[0]);
+    // solve(s.substr(1));
+    // ans[0] = toupper(s[0]);
+    // solve(s.substr(1));
 }
 
 int main()
