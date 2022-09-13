@@ -3,7 +3,7 @@
 using namespace std;
 
 void check(int n){
-    if(n&(1<<0))
+    if(n&1)
         cout<<"Odd\n";
     else
         cout<<"Even\n";
