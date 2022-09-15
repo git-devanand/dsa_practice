@@ -13,6 +13,16 @@ public:
         this->prev = NULL;
         this->next = NULL;
     }
+
+    // destructor
+    ~Node() {
+        int val = this->data;
+        if(next!=NULL){
+            delete next;
+            next = NULL;
+        }
+        cout<<"memory free for node with data "<<val<<"\n";
+    }
 };
 
 class DoublyLinkedList {
@@ -102,6 +112,38 @@ public:
         temp->next = nodeToInsert;
         nodeToInsert->prev = temp;
     }
+
+    // deletion of a node at a given position
+    void deleteNode(Node* &head, Node* &tail, int position) {
+        if(position == 1) {
+            Node* temp = head;
+            temp->next->prev = NULL;
+            head = temp->next;
+            temp->next = NULL;
+            delete temp;
+        }
+        else {
+            // deleting any node middle or last
+            Node* curr = head;
+            Node* prevs = NULL;
+            int cnt = 1;
+            while(cnt<position){
+                prevs = curr;
+                curr = curr->next;
+                cnt++;
+            }
+
+            curr->prev = NULL;
+            prevs->next = curr->next;
+            if(curr->next == NULL){
+                tail = prevs;
+            }
+            curr->next = NULL;
+            delete curr;
+        }
+
+
+    }
 };
 
 
@@ -128,6 +170,20 @@ int main()
 
     dll.insertAtPosition(head, tail, 3, 9);
     dll.printLL(head);
+
+    dll.deleteNode(head, tail, 1);
+    dll.printLL(head);
+
+    dll.deleteNode(head, tail, 3);
+    dll.printLL(head);
+
+    dll.deleteNode(head, tail, 3);
+    dll.printLL(head);
+
+
+    cout<<"Head:\t"<<head->data<<"\n";
+    cout<<"Tail:\t"<<tail->data<<"\n";
+
 
     cout<<"Length:\t"<<dll.getLength(head)<<"\n"; 
 
