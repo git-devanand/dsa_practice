@@ -15,30 +15,32 @@ public:
     }
 };
 
-// traversing a linked list
-void printLL(Node* head) {
-    Node* temp = head;
+class DoublyLinkedList {
+public:
+    // traversing a linked list
+    void printLL(Node* head) {
+        Node* temp = head;
 
-    while(temp != NULL){
-        cout<<temp->data<<" <-> ";
-        temp = temp->next;
+        while(temp != NULL){
+            cout<<temp->data<<" <-> ";
+            temp = temp->next;
+        }
+        cout<<"\n";
     }
-    cout<<"\n";
-}
 
-// get length of linked list
-int getLength(Node* head) {
-    Node* temp = head;
-    int length = 0;
+    // get length of linked list
+    int getLength(Node* head) {
+        Node* temp = head;
+        int length = 0;
 
-    while(temp != NULL){
-        length++;
-        temp = temp->next;
+        while(temp != NULL){
+            length++;
+            temp = temp->next;
+        }
+        return length;
     }
-    return length;
-}
 
-
+};
 
 
 int main()
