@@ -41,29 +41,45 @@ public:
     }
 
     // insetion at head
-    void insertAtHead(Node* &head, int d) {
-        // 1. create a temp node with value d
-        Node* temp = new Node(d);
-        // 2.
-        temp->next = head;
-        // 3.
-        head->prev = temp;
-        // 4.
-        head = temp;
+    void insertAtHead(Node* &head, Node* &tail, int d) {
+        // empty list
+        if(head == NULL){
+            Node* temp = new Node(d);
+            head = temp;
+            tail = temp;
+        }
+        else {
+            // 1. create a temp node with value d
+            Node* temp = new Node(d);
+            // 2.
+            temp->next = head;
+            // 3.
+            head->prev = temp;
+            // 4.
+            head = temp;
+        }
     }
 
     // insertion at tail
-    void insertAtTail(Node* &tail, int d) {
-        Node* temp = new Node(d);
-        tail->next = temp;
-        temp->prev = tail;
-        tail = temp;
+    void insertAtTail(Node* &head, Node* &tail, int d) {
+        // empty list
+        if(tail == NULL) {
+            Node* temp = new Node(d);
+            head = temp;
+            tail = temp;
+        }
+        else {
+            Node* temp = new Node(d);
+            tail->next = temp;
+            temp->prev = tail;
+            tail = temp;
+        }
     }
 
     // insert at poristion
     void insertAtPosition(Node* &head, Node* &tail, int position, int d) {
         if(position == 1) {
-            insertAtHead(head, d);
+            insertAtHead(head, tail, d);
             return ;
         }
 
@@ -75,7 +91,7 @@ public:
         }
 
         if(temp->next == NULL) {
-            insertAtTail(tail, d);
+            insertAtTail(head, tail, d);
             return ;
         }
 
@@ -92,25 +108,27 @@ public:
 int main()
 {
     DoublyLinkedList dll;
-    Node* node1 = new Node(10);
-    Node* head = node1;
-    Node* tail = node1;
+
+    Node* head = NULL;
+    Node* tail = NULL;
 
     dll.printLL(head);
 
-    dll.insertAtHead(head, 8);
+    dll.insertAtHead(head, tail, 8);
     dll.printLL(head);
 
-    dll.insertAtHead(head, 7);
+    dll.insertAtHead(head, tail, 7);
     dll.printLL(head);
 
-    dll.insertAtTail(tail, 22);
+    dll.insertAtTail(tail, tail, 22);
     dll.printLL(head);
 
-    dll.insertAtTail(tail, 25);
+    dll.insertAtTail(tail, tail, 25);
     dll.printLL(head);
 
     dll.insertAtPosition(head, tail, 3, 9);
     dll.printLL(head);
+
+    cout<<"Length:\t"<<dll.getLength(head)<<"\n"; 
 
 }
